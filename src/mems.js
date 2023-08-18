@@ -3,8 +3,8 @@ async function fetchData() {
     const options = {
         method: 'GET',
         headers: {
-        'X-RapidAPI-Key': '2d3e6de3b9msh0b514d56463952dp1e816ajsnc5217c9585e4', // Corrected the invalid value and added quotes
-        'X-RapidAPI-Host': 'programming-memes-images.p.rapidapi.com',
+        'X-RapidAPI-Key': '5217c95e4', // Corrected the invalid value and added quotes
+        'X-RapidAPI-Host': 'programming-memes.com',
         },
     };
 
