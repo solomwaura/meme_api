@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokes</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="memes.html">Meme's</a></li>
+            <li><a href="jokes.html">Joke's</a></li>
+            <li><a href="upcoming.html">Upcoming</a></li>
+        </ul>
+    </nav>
+    <h3>Jokes</h3>
+    <div class="all-jokes">
+        <ul class="jokes">
+
+        </ul>
+    </div>
+    <script>
+        async function fetchData() {
+            const url = 'https://world-of-jokes1.p.rapidapi.com/v1/jokes?limit=100&page=1&sortBy=score%3Adesc'; // Replace this with the URL of the API you want to fetch data from
+            const options = {
+                method: 'GET',
+                headers: {
+                'X-RapidAPI-Key': '2d3e6de3b9msh0b514d56463952dp1e816ajsnc5217c9585e4', // Corrected the invalid value and added quotes
+                'X-RapidAPI-Host': 'world-of-jokes1.p.rapidapi.com',
+                },
+            };
+
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+                // var jsonPretty = JSON.stringify(JSON.parse(result),null,2);
+
+                displayJokes(result);
+                console.log(result);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function displayJokes(result){
+            const jokesContainer = document.getElementById('jokes');
+            if(Array.isArray(result)){
+                result.forEach(joke => {
+                    const jokeTitle = document.createElement('li');
+                    jokeTitle.textContent = joke.title;
+
+                    const jokeBody = document.createElement('p');
+                    joke.jokeBody = joke.body;
+                });
+            }else{
+                console.error('Data is not an array', result);
+            }
+        }
+
+        // Call the function to fetch data
+        window.onload = fetchData;
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+    "name" : "Memes",
+    "short_name" : "Memes",
+    "start_url": ".",
+    "background_color": "#6dcdb1",
+    "theme_color": "#009578",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "images/icon.png",
+            "sizes": "192*192",
+            "type": "image/png"
+        },
+        {
+            "src": "images/beloud.png",
+            "sizes": "512*512",
+            "type": "image/png"
+        }
+    ]
+}

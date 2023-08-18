@@ -1,0 +1,41 @@
+*{
+    margin:0;
+    padding: 0 ;
+}
+header{
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #6dcdb1;
+}
+#memes-container{
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: 70px auto;
+    margin-bottom: 0;
+    overflow-x: scroll;
+}
+.meme{
+    margin: 5px;
+}
+.meme img{
+    width: 300px;
+    height: 250px;
+}
+
+@media only screen and (max-width: 768px) {
+    header{
+        padding: 10px 15px;
+    }
+    #memes-container{
+        margin-top: 80px;
+        display: block;
+    }
+
+    .meme{
+        margin: 5px auto;
+    }
+}

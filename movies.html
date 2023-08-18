@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="memes.html">Meme's</a></li>
+            <li><a href="jokes.html">Joke's</a></li>
+            <li><a href="upcoming.html">Upcoming</a></li>
+        </ul>
+    </nav>
+    <h3>Top 100 Movies</h3>
+    <div class="movies">
+
+    </div>
+    <script>
+        async function fetchData() {
+            const url = 'https://imdb-top-100-movies.p.rapidapi.com/'; // Replace this with the URL of the API you want to fetch data from
+            const options = {
+                method: 'GET',
+                headers: {
+                'X-RapidAPI-Key': '2d3e6de3b9msh0b514d56463952dp1e816ajsnc5217c9585e4', // Corrected the invalid value and added quotes
+                'X-RapidAPI-Host': 'imdb-top-100-movies.p.rapidapi.com',
+                },
+            };
+
+            try {
+                const response = await fetch(url, options);
+                const result = await response.json();
+                // var jsonPretty = JSON.stringify(JSON.parse(result),null,2);
+                console.log(result);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function displayMovies(data){
+            const moviesContainer = document.getElementById('movies');
+
+            if(Array.isArray(data)){
+                data.forEach(movie =>{
+                    const image = document.createElement('img');
+                    const title = document.createElement('h3');
+                    const genre = document.createElement('p');
+                    const trailer = document.createElement('a');
+
+                    image.src = data.image;
+                    title.textContent = data.tile;
+                    trailer.href = data.trailer;
+
+                    moviesContainer.appendChild(image);
+                    moviesContainer.appendChild(title);
+                    moviesContainer.appendChild(trailer);
+
+
+
+                });
+            } else{
+                console.error('Data is not an array:', data);
+            }
+        }
+
+        // Call the function to fetch data
+        window.onload = fetchData;
+
+
+    </script>
+</body>
+</html>
